@@ -1,0 +1,39 @@
+Author: michealwillard <willardm@onid.oregonstate.edu>
+
+Start: Sat, 24 Jan 2015 11:34:23 -0800
+End: Sat Jan 24 12:01:41 2015 -0800
+Tasks: Initial Commit, setting up repository and log
+
+Start: Sat, 24 Jan 2015 17:30:47 -0800 
+End: Sat Jan 24 18:49:17 2015 -0800 
+Tasks: Implemented  and isNull() on variables.js; uselessFunction() on functions.js; returnObjectLiteral on objects.js; updated log.txt
+
+Start: Sat, 24 Jan 2015 19:02:57 -0800 
+End: Sat Jan 24 19:16:58 2015 -0800 
+Tasks: Completed variables.js, updated log.txt
+
+Start: Sun, 25 Jan 2015 10:59:46 -0800 
+End: Sun, 25 Jan 2015 12:49:37 -0800 
+Tasks: Completed bar function and started parseGit in functions.js, updated log.txt
+
+Start: Mon, 26 Jan 2015 19:01:32 -0800 
+End: Mon, 26 Jan 2015 19:18:22 -0800 
+Tasks: Completed functions.js, updated log.txt
+
+Start: Wed, 28 Jan 2015 17:47:48 -0800 
+End: Wed, 28 Jan 2015 18:33:39 -0800 
+Tasks: Completed objects.js, updated log.txt
+
+Start: Wed, 28 Jan 2015 18:34:56 -0800 
+End: Wed, 28 Jan 2015 18:44:13 -0800 
+Tasks: Correct lint errors (except those in the comment blocks) on objects.js and functions.js. variables.js passed, updated log.txt
+
+### Part 2 ###
+
+Start: Fri, 30 Jan 2015 17:03:34 -0800 
+End: Fri, 30 Jan 2015 17:45:27 -0800 
+Tasks: Setup source code for part2.html, blank part2.js, initialized repo locally, added files, copied log.txt.
+
+Start: Sat, 30 Jan 2015 11:00:12 -0800 
+End: Sat, 30 Jan 2015 11:11:03 -0800 
+Tasks: Made initial commit and pushed repo to github.
