@@ -45,3 +45,7 @@ Tasks: Finished search and results functionality in part2.js.
 Start: Sat, 31 Jan 2015 18:14:02 -0800 
 End: Sat Jan 31 21:18:33 2015 -0800
 Tasks: Started to add the favorite functionality, re-wrote some of existing code to be more object oriented to help with favorites part2.js.
+
+Start: Sat Jan 31 21:42:33 2015 -0800 
+End: Sun Feb 01 00:52:39 2015 -0800
+Tasks: Got search working again.  Got favorites buttons and framework implemented. removeFromList() throwing error, ol not getting appended properly so ol.removeChild(li) is accessing a non node? part2.js.
