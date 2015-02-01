@@ -34,6 +34,14 @@ Start: Fri, 30 Jan 2015 17:03:34 -0800
 End: Fri, 30 Jan 2015 17:45:27 -0800 
 Tasks: Setup source code for part2.html, blank part2.js, initialized repo locally, added files, copied log.txt.
 
-Start: Sat, 30 Jan 2015 11:00:12 -0800 
-End: Sat, 30 Jan 2015 11:11:03 -0800 
+Start: Sat, 31 Jan 2015 11:00:12 -0800 
+End: Sat, 31 Jan 2015 11:11:03 -0800 
 Tasks: Made initial commit and pushed repo to github.
+
+Start: Sat, 31 Jan 2015 11:42:57 -0800 
+End: Sat Jan 31 17:47:05 2015 -0800
+Tasks: Finished search and results functionality in part2.js.
+
+Start: Sat, 31 Jan 2015 18:14:02 -0800 
+End: Sat Jan 31 21:18:33 2015 -0800
+Tasks: Started to add the favorite functionality, re-wrote some of existing code to be more object oriented to help with favorites part2.js.
