@@ -2,6 +2,9 @@
 // CS 290 Winter 2015
 // Assignment 3 Part 2
 
+// Requirements: This web app should allow a user to seach Gists through the
+// gitHub Gist api.  Results will be filtered
+
 window.favoriteArray = [];
 
 //***** SEARCH AND RESULTS SECTION *****
@@ -79,7 +82,7 @@ function createListObjects(ol, response) {
   console.log('createListObjects called');
   for (var prop in response) {
     var tempItem = new Gist();
-    tempItem.setUrl(response[prop].url);
+    tempItem.setUrl(response[prop].html_url);
     tempItem.setDesc(response[prop].description);
     for (var files in response[prop]) {
       for (var key in response[prop][files]) {
@@ -103,38 +106,60 @@ function createListObjects(ol, response) {
 function liObject(ol, tempItem) {
   console.log('liObjects called');
   var jsChecked = document.getElementsByName('filter-javascript')[0].checked;
-  var li = document.createElement('li');
+
+  // Added to check for existing
+  var storedFavorites = JSON.parse(localStorage.getItem('storedFavs'));
+  // Build the Stored Favorite List from parsed
+  for (var item in storedFavorites) {
+    // Get property
+    if (storedFavorites[item].url === tempItem.getUrl()) {
+      return;
+    }
+  }
+  // End added
+
   if (tempItem.getLang() === 'JavaScript' && jsChecked) {
      console.log('javascript found');
-    _liGist(ol, li, tempItem);
+    _liGist(ol, /*li,*/ tempItem);
+    return;
   }
   if (tempItem.getLang() === 'JSON' &&
    document.getElementById('filter-json').checked) {
      console.log('JSON found');
-    _liGist(ol, li, tempItem);
+    _liGist(ol, /*li,*/ tempItem);
+    return;
   }
   if (tempItem.getLang() === 'sql' &&
    document.getElementById('filter-sql').checked) {
      console.log('sql found');
-    _liGist(ol, li, tempItem);
+    _liGist(ol, /*li,*/ tempItem);
+    return;
   }
   if (tempItem.getLang() === 'Python' &&
    document.getElementById('filter-python').checked) {
      console.log('python found');
-    _liGist(ol, li, tempItem);
+    _liGist(ol, /*li,*/ tempItem);
+    return;
   }
   // Selecting no languages returns all Gist results
   else if (!jsChecked &&
    !(document.getElementById('filter-json').checked) &&
    !(document.getElementById('filter-sql').checked) &&
    !(document.getElementById('filter-python').checked)) {
-     _liGist(ol, li, tempItem);
+     _liGist(ol, /*li,*/ tempItem);
+     return;
+   }
+   else {
+     return;
    }
 }
 
 // Helper Function to create HTML for result objects
-function _liGist(ol, li, tempItem) {
+function _liGist(ol, /*li,*/ tempItem) {
   console.log('liGist called');
+  var li = document.createElement('li');
+  // Assign li.id, otherwise the new item isn't recognized as node by remove()
+  li.id = tempItem.getUrl();
   var aLink = document.createElement('a');
   var aDesc = document.createTextNode(tempItem.getDesc());
   // Handle for no description
@@ -180,6 +205,8 @@ function addToFavorites(inputItem) {
 function _saveFav(inputItem) {
   var ol = document.getElementById('favorites-gist');
   var li = document.createElement('li');
+  // Assign li.id, otherwise the new item isn't recognized as node by remove()
+  li.id = inputItem.getUrl();
   var aLink = document.createElement('a');
   var aDesc = document.createTextNode(inputItem.getDesc());
   // Handle for no description
@@ -204,7 +231,7 @@ function removeFromFavorites(inputItem) {
   var ol = document.getElementById('favorites-gist');
   var li = document.getElementById(inputItem.getUrl());
   // Remove the item
-  ol1.removeChild(ol2);
+  ol.removeChild(li);
   localStorage.removeItem('storedFavs');
   // Iterate through the stored array, until url match is found, then splice
   for (var i = 0; i < favoriteArray.length; i++) {
