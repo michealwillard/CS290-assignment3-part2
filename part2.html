@@ -16,7 +16,7 @@
     <section>
       <h5>Perform a Gist Search</h5>
       <div>
-        <select name='page-input'>
+        <select id='page-input'>
           <option value=1>1</option>
           <option value=2>2</option>
           <option value=3>3</option>
@@ -28,15 +28,24 @@
       <div>
         <h5>Filter by Language:</h5>
     <input type='checkbox' id='filter-javascript' checked='checked' /> JavaScript
-    <input type='checkbox' id='filter-cpp' /> C++
+    <input type='checkbox' id='filter-json' /> JSON
     <input type='checkbox' id='filter-sql' /> SQL
     <input type='checkbox' id='filter-python' /> Python
       </div>
       <div>
-        <input type='submit' value='Search' onclick='searchGist()'>
+        <input type='submit' value='Search' onclick='displaySearchResults()'>
       </div>
     </section>
     <section>
+      <h5>Favorites</h5>
+      <ol id='favorites-gist'>
+      </ol>
+      <form>
+      <input type='button' name='clear' onclick='clearFavorites()' value='Clear Favorites'>
+    </form>
+    </section>
+    <section>
+      <h5>Results</h5>
       <ol id='results-gist'>
       </ol>
     </section>
