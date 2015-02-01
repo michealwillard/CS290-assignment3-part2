@@ -3,7 +3,9 @@
 // Assignment 3 Part 2
 
 // Requirements: This web app should allow a user to seach Gists through the
-// gitHub Gist api.  Results will be filtered
+// gitHub Gist api.  Results will be filtered by language and displayed in
+// Results section.  User can add/remove items from favorite section.  New
+// searches should filter for items already in favorites.
 
 window.favoriteArray = [];
 
@@ -79,22 +81,21 @@ function displaySearchResults() {
 // It creates the Gist Object for each parsed response
 // It calls a helper function to build a list object
 function createListObjects(ol, response) {
-  console.log('createListObjects called');
   for (var prop in response) {
     var tempItem = new Gist();
     tempItem.setUrl(response[prop].html_url);
     tempItem.setDesc(response[prop].description);
     for (var files in response[prop]) {
       for (var key in response[prop][files]) {
-        //Temp language
-        language = response[prop][files][key].language
-        if (typeof language !== 'undefined') {
+        //Temp language to isolate language recognition problem in liObject
+        tempLang = response[prop][files][key].language;
+        if (typeof tempLang !== 'undefined') {
           tempItem.setLang(response[prop][files][key].language);
         }
-        else if (typeof language === 'object') {
+        else if (typeof tempLang === 'object') {
           tempItem.setLang('null');
         }
-        console.log(tempItem.getLang());
+        // console.log(tempItem.getLang());
       }
     }
     liObject(ol, tempItem);
@@ -104,10 +105,13 @@ function createListObjects(ol, response) {
 // Function to filter results by language
 //  Calls helper function to create objects for filtered results
 function liObject(ol, tempItem) {
-  console.log('liObjects called');
+  // Setup variables to clean up if statements
   var jsChecked = document.getElementsByName('filter-javascript')[0].checked;
+  var jsonChecked = document.getElementsByName('filter-json')[0].checked;
+  var sqlChecked = document.getElementsByName('filter-sql')[0].checked;
+  var pyChecked = document.getElementsByName('filter-python')[0].checked;
 
-  // Added to check for existing
+  // Added to check for existing - Works!
   var storedFavorites = JSON.parse(localStorage.getItem('storedFavs'));
   // Build the Stored Favorite List from parsed
   for (var item in storedFavorites) {
@@ -116,37 +120,25 @@ function liObject(ol, tempItem) {
       return;
     }
   }
-  // End added
-
   if (tempItem.getLang() === 'JavaScript' && jsChecked) {
-     console.log('javascript found');
-    _liGist(ol, /*li,*/ tempItem);
+    _liGist(ol, tempItem);
     return;
   }
-  if (tempItem.getLang() === 'JSON' &&
-   document.getElementById('filter-json').checked) {
-     console.log('JSON found');
-    _liGist(ol, /*li,*/ tempItem);
+  if (tempItem.getLang() === 'JSON' && jsonChecked) {
+    _liGist(ol, tempItem);
     return;
   }
-  if (tempItem.getLang() === 'sql' &&
-   document.getElementById('filter-sql').checked) {
-     console.log('sql found');
-    _liGist(ol, /*li,*/ tempItem);
+  if (tempItem.getLang() === 'sql' && sqlChecked) {
+    _liGist(ol, tempItem);
     return;
   }
-  if (tempItem.getLang() === 'Python' &&
-   document.getElementById('filter-python').checked) {
-     console.log('python found');
-    _liGist(ol, /*li,*/ tempItem);
+  if (tempItem.getLang() === 'Python' && pyChecked) {
+    _liGist(ol, tempItem);
     return;
   }
   // Selecting no languages returns all Gist results
-  else if (!jsChecked &&
-   !(document.getElementById('filter-json').checked) &&
-   !(document.getElementById('filter-sql').checked) &&
-   !(document.getElementById('filter-python').checked)) {
-     _liGist(ol, /*li,*/ tempItem);
+  else if (!jsChecked && !jsonChecked && !sqlChecked && !pyChecked) {
+     _liGist(ol, tempItem);
      return;
    }
    else {
@@ -155,8 +147,7 @@ function liObject(ol, tempItem) {
 }
 
 // Helper Function to create HTML for result objects
-function _liGist(ol, /*li,*/ tempItem) {
-  console.log('liGist called');
+function _liGist(ol, tempItem) {
   var li = document.createElement('li');
   // Assign li.id, otherwise the new item isn't recognized as node by remove()
   li.id = tempItem.getUrl();
@@ -251,7 +242,7 @@ window.onload = function() {
   var settingsStr = localStorage.getItem('storedFavs');
   // Parse localStorage
   if (settingsStr === null) {
-    storedFavorites = {'favorites':[]};
+    storedFavorites = {'favorites': []};
     localStorage.setItem('storedFavs', JSON.stringify(storedFavorites));
   }
   else {

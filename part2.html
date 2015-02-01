@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!--
-    Micheal Willard
-    CS 290-400
-    Winter 2015
-    Assignment 3 Part 2
-    -->
-    <title>Ajax Assignment</title>
-    <script src='part2.js'></script>
-    <!--<link rel="stylesheet" type="text/css" href="XXX/XXX.css"/>-->
-  </head>
-  <body>
-    <section>
-      <h1>Perform a Gist Search</h1>
-      <div>
-        <select id='page-input'>
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
-        </select>
-        <label># of Pages to Return (30 results per page)</label>
-      </div>
-      <div>
-        <h5>Filter by Language:</h5>
-    <input type='checkbox' name='filter-javascript'>JavaScript</input>
-    <input type='checkbox' id='filter-json' /> JSON
-    <input type='checkbox' id='filter-sql' /> SQL
-    <input type='checkbox' id='filter-python' /> Python
-      </div>
-      <div>
-        <input type='submit' value='Search' onclick='displaySearchResults()'>
-      </div>
-    </section>
-    <section>
-      <h4>Favorites</h4>
-      <ol id='favorites-gist'>
-      </ol>
-    </section>
-    <section>
-      <h4>Results</h4>
-      <ol id='results-gist'>
-      </ol>
-    </section>
-
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!--
+  Micheal Willard
+  Oregon State University
+  CS 290-400
+  Winter 2015
+  Assignment 3 Part 2
+-->
+<title>Ajax Assignment</title>
+<script src='part2.js'></script>
+<!--<link rel="stylesheet" type="text/css" href="XXX/XXX.css"/>-->
+</head>
+<body>
+  <section>
+    <h1>Perform a Gist Search</h1>
+    <div>
+      <select id='page-input'>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+      <label># of Pages to Return (30 results per page)</label>
+    </div>
+    <div>
+      <h5>Filter by Language:</h5>
+      <input type='checkbox' name='filter-javascript' /> JavaScript
+      <input type='checkbox' name='filter-json' /> JSON
+      <input type='checkbox' name='filter-sql' /> SQL
+      <input type='checkbox' name='filter-python' /> Python
+    </div>
+    <div>
+      <input type='submit' value='Search' onclick='displaySearchResults()'>
+    </div>
+  </section>
+  <section>
+    <h4>Favorites</h4>
+    <ol id='favorites-gist'>
+    </ol>
+  </section>
+  <section>
+    <h4>Results</h4>
+    <ol id='results-gist'>
+    </ol>
+  </section>
+</body>
 </html>

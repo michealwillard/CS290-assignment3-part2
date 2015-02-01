@@ -53,3 +53,7 @@ Tasks: Got search working again.  Got favorites buttons and framework implemente
 Start: Sun Feb 01 08:55:03 2015 -0800 
 End: Sun Feb 01 09:50:25 2015 -0800
 Tasks: Fixed the node problem, wasn't assigning id, but later calling id. Added filter for existing favorites.  Javascript all working, just needs clean up.
+
+Start: Sun Feb 01 10:00:31 2015 -0800 
+End: Sun Feb 01 10:07:29 2015 -0800
+Tasks: Cleaned up HTML and JS files.  Checked lint and HTML5 validation. committed and pushed final files, submitted homework.
